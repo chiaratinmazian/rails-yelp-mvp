@@ -1,0 +1,25 @@
+<h1><%= @restaurant.name %></h1>
+
+<p>
+  Address: <%= @restaurant.address %>
+</p>
+<p>Category: <%= @restaurant.category %></p>
+
+<h3>Reviews</h3>
+<% @restaurant.reviews.each do |review| %>
+<p>
+  <%= review.content %>
+  <%= review.rating %>
+  /5
+</p>
+<% end %>
+
+<%= form_for([@restaurant, @review]) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back to the restaurants', restaurants_path %>
